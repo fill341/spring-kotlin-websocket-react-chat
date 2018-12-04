@@ -13,6 +13,7 @@ import org.springframework.security.config.annotation.web.builders.HttpSecurity
 import org.springframework.security.authentication.AuthenticationManager
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter
 import org.springframework.security.config.annotation.method.configuration.EnableGlobalMethodSecurity
+import org.springframework.security.core.userdetails.User
 import org.springframework.web.cors.UrlBasedCorsConfigurationSource
 import org.springframework.web.filter.CorsFilter
 import org.springframework.security.crypto.password.NoOpPasswordEncoder
@@ -43,7 +44,10 @@ class SecurityConfiguration : WebSecurityConfigurerAdapter() {
     @Autowired
     @Throws(Exception::class)
     fun globalUserDetails(auth: AuthenticationManagerBuilder) {
-        auth.inMemoryAuthentication().withUser("admin").password("{noop}secret").roles("USER")
+        auth.inMemoryAuthentication()
+                .withUser(User.builder().username("admin").password("{noop}secret").roles("USER").build())
+                .withUser(User.builder().username("vasya_pupkin").password("{noop}secret").roles("USER").build())
+                .withUser(User.builder().username("ivan_ivanov").password("{noop}secret").roles("USER").build())
     }
 
     @Throws(Exception::class)
