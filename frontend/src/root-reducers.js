@@ -4,7 +4,7 @@ import { combineReducers } from 'redux-immutable'
 import { reducer as formReducer } from 'redux-form/immutable'
 import { reducer as notifications } from 'react-notification-system-redux'
 
-import login from './components/common/login/reducers'
+import login from './components/login/reducers'
 import chat from './components/chat/reducers'
 
 const initialState = fromJS({

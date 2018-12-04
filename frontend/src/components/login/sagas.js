@@ -2,11 +2,11 @@ import { takeEvery } from 'redux-saga'
 import { call, put } from 'redux-saga/effects'
 import { push } from 'react-router-redux'
 import {clearAuthentication, authenticate, buildProfile, refresh} from './utils'
-import {loginWithEmailAndPassword, loginWithRefreshToken} from '../../../datasources/login-datasource'
+import {loginWithEmailAndPassword, loginWithRefreshToken} from '../../datasources/login/login-datasource'
 import ActionTypes, {authError, authSuccess, refreshSuccess} from './actions'
-import appRoutes from '../../../utils/app-routes'
-import { notify } from '../../../utils/notification'
-import {webSocketSubscribe, webSocketUnsubscribe} from '../../ws/utility-actions'
+import appRoutes from '../../utils/app-routes'
+import { notify } from '../../utils/notification'
+import {webSocketSubscribe, webSocketUnsubscribe} from '../websocket/utility-actions'
 
 export default function *() {
     yield [

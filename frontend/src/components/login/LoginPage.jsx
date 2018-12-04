@@ -1,5 +1,5 @@
 import React from 'react'
-import LoginForm from '../login/LoginForm'
+import LoginForm from './LoginForm'
 import {Col, Panel, Row} from 'react-bootstrap'
 
 export default class LoginPage extends React.Component {

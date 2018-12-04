@@ -1,5 +1,5 @@
-import apiRoutes from '../utils/api-routes'
-import {url} from '../utils/api-routes'
+import apiRoutes from '../../utils/api-routes'
+import {url} from '../../utils/api-routes'
 import base64 from 'base-64'
 
 export function loginWithEmailAndPassword(form) {

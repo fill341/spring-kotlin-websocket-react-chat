@@ -8,12 +8,12 @@ import { Provider } from 'react-redux'
 import { syncHistoryWithStore } from 'react-router-redux'
 import { browserHistory, IndexRoute, Route, Router } from 'react-router'
 
-import {isAuthenticated} from './components/common/login/utils'
+import {isAuthenticated} from './components/login/utils'
 import appRoutes from './utils/app-routes'
 
 import App from './App'
 import store from './store'
-import LoginPage from './components/common/login/LoginPage'
+import LoginPage from './components/login/LoginPage'
 
 /* eslint-disable no-undef */
 global.__ROOT_CONTEXT__ = '/';

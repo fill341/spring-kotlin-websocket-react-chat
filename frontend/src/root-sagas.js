@@ -1,6 +1,6 @@
-import login from './components/common/login/sagas'
+import login from './components/login/sagas'
 import chat from './components/chat/sagas'
-import sagas from './components/ws/sagas'
+import sagas from './components/websocket/sagas'
 
 export default function *rootSaga() {
     yield [

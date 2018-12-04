@@ -4,9 +4,9 @@ import {take} from 'redux-saga/effects'
 import {notify} from '../utils/notification'
 import {List, Map} from 'immutable'
 import fetch from 'isomorphic-fetch'
-import {getRefreshToken, getToken} from '../components/common/login/utils'
-import {refreshToken} from '../components/common/login/actions'
-import Actions from '../components/common/login/actions'
+import {getRefreshToken, getToken} from '../components/login/utils'
+import {refreshToken} from '../components/login/actions'
+import Actions from '../components/login/actions'
 
 const request = (method, url, body) => {
 

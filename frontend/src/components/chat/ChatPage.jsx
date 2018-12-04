@@ -2,12 +2,12 @@ import React from 'react'
 import {connect} from 'react-redux'
 import {bindActionCreators} from 'redux'
 import PropTypes from 'prop-types'
-import {webSocketSubscribe} from '../ws/utility-actions'
-import {sendMessage} from '../ws/client-actions'
-import {Form, FormGroup, ListGroup, ListGroupItem, Well} from 'react-bootstrap'
+import {webSocketSubscribe} from '../websocket/utility-actions'
+import {sendMessage} from '../websocket/client-actions'
+import {Badge, Form, FormGroup, ListGroup, ListGroupItem, Well} from 'react-bootstrap'
 import {Field, reduxForm} from 'redux-form/lib/immutable';
-import validate from '../common/login/validate';
-import InputComponent from '../common/login/InputComponent'
+import validate from '../login/validate';
+import InputComponent from '../login/InputComponent'
 import {List} from 'immutable'
 
 @connect(
@@ -31,7 +31,9 @@ class ChatPage extends React.Component {
                 <Form onSubmit={this.props.handleSubmit((form) => {this.props.sendMessage({'content': form.get('content')}); this.props.reset();})}>
                     <Well>
                         <ListGroup>
-                            {this.props.messages.map(({author, content}, idx) => <ListGroupItem key={idx}>{author}: {content}</ListGroupItem>)}
+                            {this.props.messages.map(({author, content}, idx) =>
+                                <ListGroupItem key={idx}>{content}<Badge>{author}</Badge></ListGroupItem>)
+                            }
                         </ListGroup>
                         <FormGroup>
                             <Field name='content' type='textarea' component={InputComponent}/>

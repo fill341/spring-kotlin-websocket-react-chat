@@ -1,5 +1,5 @@
 import { Map } from 'immutable'
-import {ServerActions} from '../ws/server-actions'
+import {ServerActions} from '../websocket/server-actions'
 import {List} from 'immutable'
 
 function handleSetTest(state, {author, content}) {
