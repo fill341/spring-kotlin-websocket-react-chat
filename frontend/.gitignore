@@ -1,0 +1,17 @@
+target
+*.iml
+*.idea
+colors.scheme.xml
+debugger.xml
+find.xml
+ide.general.xml
+ui.lnf.xml
+vcs.xml
+node_modules/
+codestyles/
+_mac/
+dist/
+.idea/*
+*.iml
+*.css
+*.css.map
