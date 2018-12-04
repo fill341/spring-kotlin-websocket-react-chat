@@ -5,7 +5,7 @@ Used technologies:
 - Kotlin
 - React, Redux
 
-1. backend: mvn clean install && mvn spring-boot:run
+1. backend: cd  backend && mvn clean install && mvn spring-boot:run
 2. frontend: cd  frontend && npm install && npm run start-dev
 
 credentials: admin secret
