@@ -45,9 +45,9 @@ class SecurityConfiguration : WebSecurityConfigurerAdapter() {
     @Throws(Exception::class)
     fun globalUserDetails(auth: AuthenticationManagerBuilder) {
         auth.inMemoryAuthentication()
-                .withUser(User.builder().username("admin").password("{noop}secret").roles("USER").build())
-                .withUser(User.builder().username("vasya_pupkin").password("{noop}secret").roles("USER").build())
-                .withUser(User.builder().username("ivan_ivanov").password("{noop}secret").roles("USER").build())
+                .withUser(User.builder().username("admin").password("{noop}secret").roles("ADMIN").build())
+                .withUser(User.builder().username("vasya").password("{noop}secret").roles("USER").build())
+                .withUser(User.builder().username("petya").password("{noop}secret").roles("USER").build())
     }
 
     @Throws(Exception::class)
