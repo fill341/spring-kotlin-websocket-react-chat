@@ -28,39 +28,8 @@ private const val SECRET : String = "secret"
 @AutoConfigureMockMvc
 class OAuthMvcTest {
 
-    private val logger = LoggerFactory.getLogger(javaClass)
-
     @Autowired
     private val mvc: MockMvc? = null
-
-    /**
-     *
-    ACCESS_TOKEN=`curl --request POST \
-    --url http://app:secret@localhost:8080/oauth/token \
-    --header 'Content-Type: application/x-www-form-urlencoded' \
-    --data 'username=admin&password=secret&grant_type=password' | jq '.access_token' | sed 's/"//g'`
-
-    curl -H "Authorization: Bearer ${ACCESS_TOKEN}" http://localhost:8080/api/v1/test/man | jq '.'
-     */
-    @Test
-    fun testAuthenticateAndGetSecuredData() {
-
-        val authenticate = authenticate()
-
-        assertNotNull(authenticate.accessToken)
-        assertNotNull(authenticate.refreshToken)
-
-        val response = mvc?.perform(get("/api/v1/test/man")
-                .header("Authorization", "Bearer ${authenticate.accessToken}")
-                .accept("application/json;charset=UTF-8"))
-                ?.andExpect(status().isOk())
-                ?.andExpect(content().contentType("application/json;charset=UTF-8"))
-
-        val responseJson = JSONObject(response?.andReturn()?.response?.contentAsString)
-        assertEquals(responseJson.optInt("id"), 1)
-
-        logger.debug("{}", responseJson.toString())
-    }
 
     @Test
     fun testAuthenticationAndRefresh() {
@@ -76,31 +45,6 @@ class OAuthMvcTest {
         assertNotNull(refresh.refreshToken)
     }
 
-    @Test
-    fun testAuthenticationRefreshAndGetSecuredData() {
-
-        val authenticate = authenticate()
-
-        assertNotNull(authenticate.accessToken)
-        assertNotNull(authenticate.refreshToken)
-
-        val refresh = refresh(authenticate.refreshToken)
-
-        assertNotNull(refresh.accessToken)
-        assertNotNull(refresh.refreshToken)
-
-
-        val response = mvc?.perform(get("/api/v1/test/man")
-                .header("Authorization", "Bearer ${refresh.accessToken}")
-                .accept("application/json;charset=UTF-8"))
-                ?.andExpect(status().isOk())
-                ?.andExpect(content().contentType("application/json;charset=UTF-8"))
-
-        val responseJson = JSONObject(response?.andReturn()?.response?.contentAsString)
-        assertEquals(responseJson.optInt("id"), 1)
-
-        logger.debug("{}", responseJson.toString())
-    }
 
     private fun authenticate(): OAuthPojo {
 
