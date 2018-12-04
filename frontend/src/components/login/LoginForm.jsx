@@ -19,9 +19,9 @@ class LoginForm extends React.Component {
         const {handleSubmit, valid, reset, submitLogin} = this.props;
 
         return (
-            <Form className="edit-form" horizontal onSubmit={handleSubmit((form) => submitLogin(form))}>
-                <Field controlId='formUsername' name='username' component={InputComponent} label='username' placeholder='Username'/>
-                <Field controlId='formPassword' name='password' type='password' component={InputComponent} label='password' placeholder='Password'/>
+            <Form className='edit-form' horizontal onSubmit={handleSubmit((form) => submitLogin(form))}>
+                <Field name='username' component={InputComponent} label='username' placeholder='Username'/>
+                <Field name='password' component={InputComponent} type='password' label='password' placeholder='Password'/>
                 <FormGroup>
                     <ButtonGroup className='pull-right'>
                         <Button onClick={reset} >Reset</Button>
